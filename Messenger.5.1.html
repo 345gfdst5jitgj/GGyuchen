@@ -39,24 +39,24 @@
             --light-border-color: #e0e0e0;
 
             /* Dark Mode */
-            --dark-bg-primary: #0f0f0f;
+            --dark-bg-primary: #0a0a0a;
             --dark-bg-secondary: #1a1a1a;
-            --dark-bg-tertiary: #252525;
+            --dark-bg-tertiary: #2a2a2a;
             --dark-text-primary: #ffffff;
-            --dark-text-secondary: #a0a0a0;
-            --dark-text-tertiary: #707070;
-            --dark-border-color: #2d2d2d;
+            --dark-text-secondary: #b0b0b0;
+            --dark-text-tertiary: #808080;
+            --dark-border-color: #333333;
 
             /* Accent Colors */
-            --primary: #4f46e5;
-            --primary-light: #6366f1;
-            --primary-dark: #4338ca;
-            --secondary: #10b981;
-            --secondary-light: #34d399;
-            --danger: #ef4444;
-            --danger-light: #f87171;
-            --warning: #f59e0b;
-            --success: #10b981;
+            --primary: #5865f2;
+            --primary-light: #7289da;
+            --primary-dark: #4752c4;
+            --secondary: #57f287;
+            --secondary-light: #80f31f;
+            --danger: #ed4245;
+            --danger-light: #f26522;
+            --warning: #faa61a;
+            --success: #57f287;
 
             /* Active Theme */
             --bg-primary: var(--dark-bg-primary);
@@ -89,15 +89,16 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             transition: all 0.3s ease;
-            font-size: 16px;
+            font-size: 15px;
             overflow-x: hidden;
-            font-weight: 300;
+            font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0.3px;
         }
 
         h1, h2, h3, .font-bold, .font-semibold, strong, .tracking-widest {
-            font-weight: 500;
+            font-weight: 600;
         }
 
         ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -119,6 +120,11 @@
             to { opacity: 1; }
         }
 
+        @keyframes slideIn {
+            from { transform: translateX(-10px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
             30% { transform: translateY(-8px); opacity: 1; }
@@ -135,8 +141,8 @@
         }
 
         @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.1); }
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); opacity: 1; }
         }
 
@@ -150,7 +156,7 @@
         }
 
         .message-enter { animation: slideUp 0.3s ease-out; }
-        .contact-enter { animation: fadeIn 0.3s ease-in-out; }
+        .contact-enter { animation: slideIn 0.3s ease-in-out; }
         .pop-in { animation: popIn 0.4s ease-out; }
 
         /* === BUTTONS === */
@@ -160,11 +166,11 @@
             justify-content: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            border-radius: 12px;
-            font-weight: 500;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid transparent;
+            border: none;
             outline: none;
             position: relative;
             overflow: hidden;
@@ -187,14 +193,17 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--primary);
             color: white;
-            border: none;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
         }
         .btn-primary:hover {
+            background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
@@ -208,23 +217,23 @@
         }
 
         .btn-success {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-            color: white;
+            background: var(--secondary);
+            color: #000;
             border: none;
         }
         .btn-success:hover {
+            background: var(--secondary-light);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, var(--danger) 0%, var(--danger-light) 100%);
+            background: var(--danger);
             color: white;
             border: none;
         }
         .btn-danger:hover {
+            background: var(--danger-light);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
         .btn-icon {
@@ -233,7 +242,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            border-radius: 12px;
+            border-radius: 8px;
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
@@ -247,7 +256,7 @@
             color: var(--primary);
         }
         .btn-icon.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--primary);
             border-color: var(--primary);
             color: white;
         }
@@ -258,7 +267,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 0.75rem 1rem;
             font-family: inherit;
             font-size: 0.95rem;
@@ -267,7 +276,7 @@
         .input-base:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
         }
         .input-base::placeholder {
             color: var(--text-tertiary);
@@ -275,21 +284,22 @@
 
         /* === MESSAGE BUBBLES === */
         .sent-bubble {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--primary);
             border: none;
             color: white;
-            border-radius: 18px;
+            border-radius: 12px;
             padding: 0.75rem 1rem;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+            box-shadow: 0 2px 8px rgba(88, 101, 242, 0.2);
             max-width: 80%;
             word-break: break-word;
             animation: slideUp 0.3s ease-out;
             position: relative;
+            font-weight: 500;
         }
 
         .sent-bubble.edited::after {
             content: '(已编辑)';
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             opacity: 0.8;
             margin-left: 0.3rem;
         }
@@ -298,19 +308,20 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            border-radius: 18px;
+            border-radius: 12px;
             padding: 0.75rem 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
             max-width: 80%;
             word-break: break-word;
             animation: slideUp 0.3s ease-out;
             position: relative;
+            font-weight: 500;
         }
 
         .message-container {
             display: flex;
             animation: slideUp 0.3s ease-out;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             position: relative;
         }
 
@@ -330,13 +341,14 @@
             gap: 0.25rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 0.25rem;
             margin-bottom: 0.5rem;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
             z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .message-container:hover .message-actions {
@@ -356,6 +368,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
+            font-size: 0.85rem;
         }
 
         .message-action-btn:hover {
@@ -380,7 +393,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             transition: all 0.2s ease;
         }
 
@@ -396,7 +409,7 @@
             gap: 0.75rem;
             padding: 0.75rem;
             background: var(--bg-tertiary);
-            border-radius: 12px;
+            border-radius: 10px;
         }
 
         .voice-player {
@@ -413,30 +426,33 @@
 
         /* === ONLINE STATUS === */
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--secondary);
-            border: 2px solid var(--bg-primary);
+            border: 2.5px solid var(--bg-primary);
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: -2px;
+            right: -2px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .status-dot.offline {
             background: var(--text-tertiary);
+            animation: none;
         }
 
         /* === IMAGES === */
         .chat-image-container {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 10px;
             width: 100px;
             height: 100px;
             cursor: pointer;
             transition: all 0.2s ease;
             animation: popIn 0.3s ease-out;
+            border: 1px solid var(--border-color);
         }
 
         .chat-image-container img {
@@ -447,7 +463,7 @@
         }
 
         .chat-image-container:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         /* === DATE SEPARATOR === */
@@ -455,8 +471,8 @@
             text-align: center;
             margin: 1.5rem 0;
             color: var(--text-tertiary);
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-size: 0.7rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             position: relative;
@@ -477,110 +493,114 @@
 
         /* === CONTACT LIST === */
         .contact-item {
-            padding: 1rem;
+            padding: 0.875rem 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.875rem;
             cursor: pointer;
             transition: all 0.2s ease;
             border-bottom: 1px solid var(--border-color);
-            animation: fadeIn 0.3s ease-in-out;
+            animation: slideIn 0.3s ease-in-out;
             position: relative;
+            border-left: 3px solid transparent;
         }
 
         .contact-item:hover {
-            background: rgba(79, 70, 229, 0.05);
-            border-left: 3px solid var(--primary);
+            background: rgba(88, 101, 242, 0.08);
+            border-left-color: var(--primary);
             padding-left: calc(1rem - 3px);
         }
 
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--primary);
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.2s ease;
-        }
-
-        .contact-item:hover::before {
-            transform: scaleY(1);
+        .contact-item.active {
+            background: rgba(88, 101, 242, 0.12);
+            border-left-color: var(--primary);
+            padding-left: calc(1rem - 3px);
         }
 
         .contact-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 1.1rem;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 2px 8px rgba(88, 101, 242, 0.25);
             animation: popIn 0.3s ease-out;
             position: relative;
+            overflow: hidden;
+        }
+
+        .contact-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .contact-info {
             flex: 1;
             min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .contact-name {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.25rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-size: 0.95rem;
         }
 
         .contact-message {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-weight: 400;
         }
 
         .contact-unread {
             width: 10px;
             height: 10px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--primary);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         .contact-time {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-tertiary);
             white-space: nowrap;
             margin-left: auto;
+            font-weight: 500;
         }
 
         /* === CONTACT SECTION HEADER === */
         .contact-section-header {
             padding: 0.75rem 1rem;
             color: var(--text-tertiary);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             background: transparent;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 700;
+            letter-spacing: 0.15em;
         }
 
         /* === SEARCH BOX === */
         .search-box {
-            padding: 1rem;
+            padding: 0.875rem;
             border-bottom: 1px solid var(--border-color);
             background: var(--bg-primary);
         }
@@ -590,17 +610,17 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 0.75rem 1rem;
             font-family: inherit;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
         }
 
         .search-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
         }
 
         /* === THEME TOGGLE === */
@@ -611,7 +631,7 @@
             padding: 0.5rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -631,10 +651,10 @@
         }
 
         .theme-toggle-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.05em;
         }
 
@@ -643,9 +663,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-tertiary);
-            font-mono: true;
+            font-weight: 600;
         }
 
         .status-indicator {
@@ -677,10 +697,11 @@
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
         .typing-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             font-style: italic;
             margin-left: 0.5rem;
+            font-weight: 500;
         }
 
         /* === HEADER === */
@@ -703,11 +724,8 @@
 
         .header-title {
             font-size: 1.75rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 800;
+            color: var(--primary);
             letter-spacing: -0.5px;
         }
 
@@ -721,8 +739,8 @@
         .id-box {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -732,9 +750,9 @@
         }
 
         .id-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             flex-shrink: 0;
@@ -742,8 +760,8 @@
 
         .id-value {
             font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             color: var(--primary-light);
             flex: 1;
             white-space: nowrap;
@@ -771,27 +789,28 @@
             font-size: 0.8rem;
             margin-top: 0.5rem;
             padding: 0.5rem;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.2s ease;
             animation: slideUp 0.3s ease-out;
+            font-weight: 500;
         }
 
         .add-contact-message.success {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(87, 242, 135, 0.1);
             color: var(--secondary);
-            border: 1px solid var(--secondary);
+            border: 1px solid rgba(87, 242, 135, 0.3);
         }
 
         .add-contact-message.error {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(237, 66, 69, 0.1);
             color: var(--danger);
-            border: 1px solid var(--danger);
+            border: 1px solid rgba(237, 66, 69, 0.3);
         }
 
         .add-contact-message.info {
-            background: rgba(79, 70, 229, 0.1);
+            background: rgba(88, 101, 242, 0.1);
             color: var(--primary);
-            border: 1px solid var(--primary);
+            border: 1px solid rgba(88, 101, 242, 0.3);
         }
 
         /* === CHAT FOOTER === */
@@ -947,7 +966,7 @@
         .theme-modal {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 2rem;
             max-width: 500px;
             width: 90%;
@@ -959,7 +978,7 @@
 
         .theme-modal-title {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1.5rem;
             color: var(--text-primary);
         }
@@ -974,7 +993,7 @@
         .theme-option {
             padding: 1rem;
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             text-align: center;
             transition: all 0.2s ease;
@@ -989,7 +1008,7 @@
 
         .theme-option.active {
             border-color: var(--primary);
-            background: rgba(79, 70, 229, 0.1);
+            background: rgba(88, 101, 242, 0.1);
             box-shadow: 0 0 0 1px var(--primary);
         }
 
@@ -999,9 +1018,9 @@
         }
 
         .theme-option-label {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .color-palette {
@@ -1042,23 +1061,24 @@
             right: 1rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             max-width: 350px;
             z-index: 100;
             animation: slideUp 0.3s ease-out;
             backdrop-filter: blur(10px);
+            font-weight: 600;
         }
 
         .notification.success {
             border-color: var(--secondary);
-            background: rgba(16, 185, 129, 0.05);
+            background: rgba(87, 242, 135, 0.05);
         }
 
         .notification.error {
             border-color: var(--danger);
-            background: rgba(239, 68, 68, 0.05);
+            background: rgba(237, 66, 69, 0.05);
         }
 
         .notification-close {
@@ -1088,12 +1108,12 @@
         .skeleton-message {
             height: 40px;
             margin-bottom: 1rem;
-            border-radius: 12px;
+            border-radius: 8px;
         }
 
         .skeleton-contact {
-            height: 60px;
-            margin-bottom: 0.5rem;
+            height: 70px;
+            margin-bottom: 0.75rem;
             border-radius: 8px;
         }
 
@@ -1113,7 +1133,7 @@
         .gif-picker-content {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 2rem;
             max-width: 600px;
             width: 90%;
@@ -1133,7 +1153,7 @@
         .gif-item {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             aspect-ratio: 1;
             background: var(--bg-tertiary);
@@ -1203,7 +1223,7 @@
             <!-- Header -->
             <div class="header">
                 <div class="header-top">
-                    <h1 class="header-title text-2xl">Messenger 5.1</h1>
+                    <h1 class="header-title">Messenger</h1>
                     <div class="header-controls">
                         <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">
                             <i class="fas fa-moon"></i>
@@ -1218,13 +1238,13 @@
 
             <!-- Search Box -->
             <div class="search-box">
-                <input type="text" id="message-search" class="search-input" placeholder="搜索消息...">
+                <input type="text" id="message-search" class="search-input" placeholder="🔍 搜索...">
             </div>
 
             <!-- Add Contact -->
             <div class="add-contact-section">
                 <div class="add-contact-input-group">
-                    <input type="text" id="new-contact-name" class="input-base" placeholder="联系人姓名">
+                    <input type="text" id="new-contact-name" class="input-base" placeholder="添加联系人">
                     <button id="add-contact-btn" class="btn-primary">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -1247,12 +1267,12 @@
             <div class="header">
                 <div class="header-top">
                     <div class="flex items-center gap-3">
-                        <div class="contact-avatar relative">
+                        <div class="contact-avatar relative w-12 h-12">
                             <span id="chat-contact-initial">C</span>
                             <div class="status-dot" id="contact-status-dot"></div>
                         </div>
                         <div>
-                            <h2 id="chat-contact-name" class="text-lg font-bold">Contact Name</h2>
+                            <h2 id="chat-contact-name" class="text-base font-bold">Contact Name</h2>
                             <span id="contact-status" class="text-xs text-[var(--text-secondary)]">Online</span>
                         </div>
                     </div>
@@ -1459,9 +1479,10 @@
             addSampleContacts() {
                 if (this.contacts.length === 0) {
                     this.contacts = [
-                        { id: 'contact_1', name: 'Alice', lastMessage: '嗨，你好吗？', timestamp: Date.now(), isOnline: true },
-                        { id: 'contact_2', name: 'Bob', lastMessage: '今天见面怎么样？', timestamp: Date.now() - 3600000, isOnline: false },
-                        { id: 'contact_3', name: 'Charlie', lastMessage: '谢谢你的帮助！', timestamp: Date.now() - 7200000, isOnline: true }
+                        { id: 'contact_1', name: '若雨', lastMessage: '嗨，你好吗？', timestamp: Date.now(), isOnline: true },
+                        { id: 'contact_2', name: '夏沫', lastMessage: '今天见面怎么样？', timestamp: Date.now() - 3600000, isOnline: false },
+                        { id: 'contact_3', name: '清风', lastMessage: '谢谢你的帮助！', timestamp: Date.now() - 7200000, isOnline: true },
+                        { id: 'contact_4', name: '星月', lastMessage: '哈哈哈😂', timestamp: Date.now() - 1800000, isOnline: true }
                     ];
                     this.saveContacts();
                 }
@@ -1499,10 +1520,14 @@
 
                 this.contacts.forEach(contact => {
                     const contactEl = document.createElement('div');
-                    contactEl.className = 'contact-item';
+                    contactEl.className = `contact-item ${this.currentContact?.id === contact.id ? 'active' : ''}`;
+                    const nameInitials = contact.name.slice(0, 2);
+                    const colors = ['#5865f2', '#57f287', '#faa61a', '#ed4245', '#f26522'];
+                    const bgColor = colors[nameInitials.charCodeAt(0) % colors.length];
+                    
                     contactEl.innerHTML = `
-                        <div class="contact-avatar relative">
-                            <span>${contact.name.charAt(0).toUpperCase()}</span>
+                        <div class="contact-avatar relative" style="background: linear-gradient(135deg, ${bgColor}, ${bgColor}aa);">
+                            <span>${nameInitials}</span>
                             <div class="status-dot ${!contact.isOnline ? 'offline' : ''}"></div>
                         </div>
                         <div class="contact-info">
@@ -1519,14 +1544,21 @@
             openChat(contact) {
                 this.currentContact = contact;
                 document.getElementById('chat-contact-name').textContent = contact.name;
-                document.getElementById('chat-contact-initial').textContent = contact.name.charAt(0).toUpperCase();
+                document.getElementById('chat-contact-initial').textContent = contact.name.slice(0, 2);
                 document.getElementById('contact-status').textContent = contact.isOnline ? '在线' : '离线';
                 document.getElementById('contact-status-dot').className = 'status-dot ' + (!contact.isOnline ? 'offline' : '');
+
+                // Update header avatar style
+                const colors = ['#5865f2', '#57f287', '#faa61a', '#ed4245', '#f26522'];
+                const nameInitials = contact.name.slice(0, 2);
+                const bgColor = colors[nameInitials.charCodeAt(0) % colors.length];
+                document.getElementById('chat-contact-initial').parentElement.style.background = `linear-gradient(135deg, ${bgColor}, ${bgColor}aa)`;
 
                 document.getElementById('contacts-view').classList.add('view-hidden');
                 document.getElementById('chat-view').classList.remove('view-hidden');
 
                 this.renderMessages();
+                this.renderContacts();
             }
 
             closeChat() {
@@ -1536,6 +1568,7 @@
                 document.getElementById('message-input').value = '';
                 this.selectedImages = [];
                 this.renderImages();
+                this.renderContacts();
             }
 
             renderMessages() {
@@ -1545,6 +1578,11 @@
                 messagesContainer.innerHTML = '';
 
                 const contactMessages = this.messages[this.currentContact.id] || [];
+
+                if (contactMessages.length === 0) {
+                    messagesContainer.innerHTML = '<div class="text-center text-[var(--text-tertiary)] py-8">还没有消息，开始聊天吧👋</div>';
+                    return;
+                }
 
                 contactMessages.forEach((msg, index) => {
                     const messageEl = document.createElement('div');
@@ -1570,13 +1608,13 @@
 
                     messageEl.innerHTML = `
                         <div class="message-actions">
-                            <button class="message-action-btn" onclick="messenger.editMessage('${this.currentContact.id}', ${index})">
+                            <button class="message-action-btn" onclick="messenger.editMessage('${this.currentContact.id}', ${index})" title="编辑">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="message-action-btn" onclick="messenger.deleteMessage('${this.currentContact.id}', ${index})">
+                            <button class="message-action-btn" onclick="messenger.deleteMessage('${this.currentContact.id}', ${index})" title="删除">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <button class="message-action-btn" onclick="messenger.toggleReactions(this)">
+                            <button class="message-action-btn" onclick="messenger.toggleReactions(this)" title="反应">
                                 <i class="fas fa-smile"></i>
                             </button>
                         </div>
@@ -1679,8 +1717,9 @@
 
             editMessage(contactId, index) {
                 const msg = this.messages[contactId][index];
+                if (msg.type !== 'text') return;
                 const newContent = prompt('编辑消息:', msg.content);
-                if (newContent !== null) {
+                if (newContent !== null && newContent.trim()) {
                     msg.content = newContent;
                     msg.edited = true;
                     this.saveMessages();
@@ -1689,8 +1728,7 @@
             }
 
             toggleReactions(btn) {
-                const reactions = ['👍', '❤️', '😂', '😮', '😢'];
-                // Simple reaction implementation
+                const reactions = ['👍', '❤️', '😂', '😮', '😢', '🔥', '✨'];
                 const reaction = reactions[Math.floor(Math.random() * reactions.length)];
                 this.showMessage(`添加了反应 ${reaction}`, 'success');
             }
@@ -1714,7 +1752,7 @@
                 const btn = document.getElementById('voice-btn');
                 btn.classList.remove('active');
                 
-                if (this.messages[this.currentContact.id]) {
+                if (this.currentContact && this.messages[this.currentContact.id]) {
                     this.messages[this.currentContact.id].push({
                         type: 'voice',
                         content: 'voice_' + Date.now() + '.wav',
@@ -1729,7 +1767,7 @@
             }
 
             playVoice(voiceFile) {
-                this.showMessage('播放语音消息: ' + voiceFile, 'success');
+                this.showMessage('▶️ 播放语音消息', 'success');
             }
 
             toggleGifModal() {
@@ -1804,12 +1842,21 @@
                 const contactsList = document.getElementById('contacts-list');
                 contactsList.innerHTML = '';
 
+                if (filtered.length === 0) {
+                    contactsList.innerHTML = '<div class="text-center text-[var(--text-tertiary)] py-8">未找到匹配的联系人</div>';
+                    return;
+                }
+
                 filtered.forEach(contact => {
                     const contactEl = document.createElement('div');
                     contactEl.className = 'contact-item';
+                    const nameInitials = contact.name.slice(0, 2);
+                    const colors = ['#5865f2', '#57f287', '#faa61a', '#ed4245', '#f26522'];
+                    const bgColor = colors[nameInitials.charCodeAt(0) % colors.length];
+                    
                     contactEl.innerHTML = `
-                        <div class="contact-avatar">
-                            <span>${contact.name.charAt(0).toUpperCase()}</span>
+                        <div class="contact-avatar" style="background: linear-gradient(135deg, ${bgColor}, ${bgColor}aa);">
+                            <span>${nameInitials}</span>
                         </div>
                         <div class="contact-info">
                             <div class="contact-name">${contact.name}</div>
